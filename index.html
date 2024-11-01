@@ -8,12 +8,12 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		<title>Tienda</title>
+		<title>Libreria Artesanal</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<header>
-			<h1>Tienda</h1>
+			<h1>Libreria Artesanal<h1>
 
 			<div class="container-icon">
 				<div class="container-cart-icon">
@@ -44,20 +44,7 @@
 								<p class="titulo-producto-carrito">Cuaderno de papel reciclado</p>
 								<span class="precio-producto-carrito">$12000</span>
 							</div>
-							<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="icon-close"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M6 18L18 6M6 6l12 12"
-							/>
-						</svg>
+							
 						</div>
 					</div>
 
@@ -65,23 +52,38 @@
 						<h3>Total:</h3>
 						<span class="total-pagar">$200</span>
 					</div>
+
+					<div id="email-section" class="hidden">
+						<label for="email">Ingresa tu email:</label>
+						<input type="email" id="email" placeholder="ejemplo@correo.com" required>
+						<button id="submit-email">Enviar</button>
+					</div>
+					
+					<p class="cart-empty">El carrito está vacío</p>
+			
 					<div class="cart-total">
 						<button id="finalizar-compra">Finalizar Compra</button>
 						<span class="total-pagar"></span>
 					</div>
-					<p class="cart-empty">El carrito está vacío</p>
 				</div>
+			</div>
+			
+					
+					</div>
 			</div>
 		</header>
 		<div class="container-items">
 			<div class="item">
 				<figure>
 					<img
-						src="imagenes/cuaderno de papel.jpg"  
-						alt="Close"
+						src="imagenes/cuaderno de papel.jpg"
+						alt="producto"
 						class="icon-close"
-						/>"
+					/>
 				</figure>
+				
+							
+						
 				<div class="info-product">
 					<h2>Cuaderno de papel reciclado</h2>
 					<p class="price">$12000</p>

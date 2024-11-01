@@ -125,9 +125,12 @@ window.addEventListener('DOMContentLoaded', () => {
     showHTML();
 });
 
-const finalizarCompraBtn = document.getElementById('finalizar-compra');
+const finalizarCompra = document.getElementById('finalizar-compra');
+const emailSection = document.getElementById('email-section');
+const emailInput = document.getElementById('email');
+const submitEmailBtn = document.getElementById('submit-email');
 
-finalizarCompraBtn.addEventListener('click', () => {
+finalizarCompra.addEventListener('click', () => {
     if (allProducts.length === 0) {
         Swal.fire({
             title: 'Carrito vacío',
@@ -136,9 +139,17 @@ finalizarCompraBtn.addEventListener('click', () => {
             confirmButtonText: 'Entendido'
         });
     } else {
+        emailSection.classList.remove('hidden'); // Muestra la sección del email
+    }
+});
+
+// Validar email y finalizar compra
+submitEmailBtn.addEventListener('click', () => {
+    const emailValue = emailInput.value;
+    if (emailValue) {
         Swal.fire({
             title: '¿Finalizar Compra?',
-            text: 'Estás a punto de finalizar tu compra.',
+            text: `Estás a punto de finalizar tu compra. Se enviará un recibo a ${emailValue}.`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -149,15 +160,23 @@ finalizarCompraBtn.addEventListener('click', () => {
             if (result.isConfirmed) {
                 Swal.fire(
                     '¡Compra finalizada!',
-                    'Gracias por tu compra.',
+                    'Gracias por tu compra. Se ha enviado un recibo a tu email.',
                     'success'
                 );
 
-                
-                allProducts = []; 
+                allProducts = [];
                 updateLocalStorage();
-                showHTML(); 
+                showHTML();
+                emailInput.value = ''; // Limpia el campo del email
+                emailSection.classList.add('hidden'); // Oculta la sección del email
             }
+        });
+    } else {
+        Swal.fire({
+            title: 'Email requerido',
+            text: 'Por favor, ingresa un email válido.',
+            icon: 'warning',
+            confirmButtonText: 'Entendido'
         });
     }
 });
